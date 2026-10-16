@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1421">
+  <title>SPY NETWORK — لعبة الجاسوس</title>
+  <style>
+    :root{--bg:#09111d;--panel:#111d2b;--panel2:#162536;--line:#283a4f;--text:#edf5ff;--muted:#91a5bb;--blue:#248be4;--blue2:#65c7ff;--blue3:#102f4e;--gray:#7d8d9e;--green:#56d6a0;--red:#ff6e7b;--gold:#ffc56b;--radius:22px;--shadow:0 24px 70px #02071280}
+    *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 80% -10%,#143b5b55,transparent 42%),radial-gradient(ellipse at 10% 35%,#17446a21,transparent 35%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--blue2);outline-offset:2px}button:active:not(:disabled){transform:scale(.985)}.shell{width:min(1120px,calc(100% - 32px));margin:auto}.topbar{height:82px;border-bottom:1px solid #ffffff0d;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-mark{width:44px;height:44px;display:grid;place-items:center;background:linear-gradient(145deg,#288fe8,#15518b);border-radius:15px;box-shadow:0 8px 28px #1b8feb40;position:relative;overflow:hidden}.brand-mark:after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 36%,#ffffff38 48%,transparent 60%);transform:translateX(-80%);animation:sweep 5s infinite}.brand-mark svg{width:26px;height:26px;position:relative;z-index:1}.brand-title{font-weight:900;letter-spacing:1.6px;font-size:15px;white-space:nowrap}.brand-sub{font-size:10px;color:var(--muted);letter-spacing:2.2px;white-space:nowrap}.top-actions{display:flex;align-items:center;gap:10px}.status{display:flex;align-items:center;gap:7px;border:1px solid var(--line);padding:7px 11px;border-radius:999px;color:var(--muted);font-size:12px;white-space:nowrap}.status-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px currentColor}.status.online .status-dot{background:var(--green);color:var(--green)}.status.offline .status-dot{background:var(--red);color:var(--red)}.user-chip{display:none;align-items:center;gap:9px;padding:5px 10px 5px 5px;border:1px solid var(--line);border-radius:999px;background:#101d2a}.avatar{width:31px;height:31px;background:linear-gradient(145deg,#2c91e8,#25415e);border-radius:50%;display:grid;place-items:center;font-weight:800}.user-short{font-size:12px;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.view{padding:30px 0 56px}.hidden{display:none!important}.auth-wrap{min-height:calc(100vh - 145px);display:grid;place-items:center;padding:25px 0}.auth-card{width:min(470px,100%);background:linear-gradient(145deg,#142334f2,#0f1b29f5);border:1px solid #30455b;border-radius:28px;padding:clamp(22px,5vw,38px);box-shadow:var(--shadow);position:relative;overflow:hidden}.auth-card:before{content:"";position:absolute;right:-60px;top:-100px;width:240px;height:240px;border:1px solid #368edb24;border-radius:50%;box-shadow:0 0 0 26px #368edb08,0 0 0 52px #368edb06;pointer-events:none}.auth-heading{text-align:center;position:relative}.auth-emblem{margin:0 auto 15px;width:76px;height:76px;border:1px solid #368de966;background:linear-gradient(145deg,#163f63,#102336);border-radius:24px;display:grid;place-items:center;box-shadow:0 0 45px #168de22b;animation:float 4s ease-in-out infinite}.auth-emblem svg{width:40px;height:40px;color:var(--blue2)}h1,h2,h3,p{margin-top:0}.auth-heading h1{font-size:27px;margin-bottom:5px;letter-spacing:1px}.auth-heading p{font-size:13px;color:var(--muted);margin-bottom:25px}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;border:1px solid var(--line);border-radius:13px;background:#0b1622;margin-bottom:22px}.auth-tab{border:0;border-radius:9px;padding:9px;background:transparent;color:var(--muted);font-weight:700}.auth-tab.active{background:linear-gradient(135deg,#288fe8,#2065a6);color:#fff;box-shadow:0 5px 18px #1977ca33}.field{display:grid;gap:7px;margin-bottom:15px}.field label{font-size:12px;color:#b9c9d9;font-weight:700}.field input,.field select,.code-input{width:100%;padding:12px 14px;color:var(--text);border:1px solid #2a3d52;border-radius:12px;background:#0b1724;outline:none;transition:border .2s,box-shadow .2s}.field input::placeholder,.code-input::placeholder{color:#5d7186}.field input:focus,.field select:focus,.code-input:focus{border-color:#328fe0;box-shadow:0 0 0 3px #328fe01b}.hint{color:var(--muted);font-size:11px;margin-top:-6px;margin-bottom:12px}.btn{border:1px solid transparent;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;font-weight:800;transition:transform .16s,filter .2s,border-color .2s;background:#1a2d40;color:var(--text)}.btn:hover:not(:disabled){filter:brightness(1.12)}.btn-primary{background:linear-gradient(130deg,#218ce5,#1768ae);color:white;box-shadow:0 8px 22px #1687dc20}.btn-secondary{background:#162638;border-color:#2b4057}.btn-ghost{background:transparent;border-color:#304259;color:#a9bdd0}.btn-danger{background:#3b202b;border-color:#61303e;color:#ffb5bc}.btn-success{background:#15372f;border-color:#28604f;color:#8cf0c9}.btn-small{padding:7px 11px;font-size:12px;border-radius:9px}.btn-block{width:100%}.auth-error{color:#ffb7bf;background:#3a1d29;border:1px solid #65303d;border-radius:11px;font-size:12px;padding:10px 12px;margin-bottom:12px}.auth-foot{text-align:center;color:#71869b;font-size:11px;margin:17px 0 0}.hero{border:1px solid #29445e;border-radius:26px;padding:clamp(23px,5vw,42px);background:radial-gradient(ellipse at 15% 20%,#1b75b53b,transparent 40%),linear-gradient(120deg,#142638,#101b29);position:relative;overflow:hidden;box-shadow:0 20px 55px #02081530}.hero:after{content:"";position:absolute;left:-70px;bottom:-150px;width:310px;height:310px;border:1px solid #63bbff1a;border-radius:50%;box-shadow:0 0 0 25px #63bbff08,0 0 0 50px #63bbff06;pointer-events:none}.eyebrow{color:var(--blue2);font-size:11px;font-weight:900;letter-spacing:2px;display:flex;align-items:center;gap:8px}.eyebrow:before{content:"";width:22px;height:2px;background:var(--blue2);box-shadow:0 0 12px #39a7ff}.hero h1{font-size:clamp(29px,5vw,46px);line-height:1.18;margin:14px 0 12px;max-width:610px}.hero h1 span{color:var(--blue2)}.hero p{color:#9cb0c5;max-width:550px;font-size:14px;margin-bottom:24px}.hero-pills{display:flex;flex-wrap:wrap;gap:9px}.pill{padding:6px 10px;border-radius:999px;background:#1d3549;border:1px solid #2e4c65;font-size:11px;color:#b9d5eb}.dash-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:20px}.panel{background:linear-gradient(150deg,#142334,#101b28);border:1px solid #283b50;border-radius:var(--radius);padding:22px;min-width:0}.panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.panel-heading h2{font-size:17px;margin:0}.panel-heading p{font-size:12px;color:var(--muted);margin:4px 0 0}.icon-badge{width:38px;height:38px;border:1px solid #2c5a7c;background:#132d44;border-radius:12px;display:grid;place-items:center;font-size:19px;flex-shrink:0}.player-options{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0 17px}.player-option{border:1px solid #2b4055;background:#101b28;border-radius:13px;padding:13px 8px;color:#9fb4c9;text-align:center;transition:.2s}.player-option strong{display:block;font-size:25px;color:#eef7ff;line-height:1.2}.player-option span{font-size:11px}.player-option.selected{border-color:#328fe0;background:linear-gradient(160deg,#17446b,#11263a);box-shadow:inset 0 0 0 1px #328fe030,0 0 20px #1687dc12}.player-option.selected strong{color:var(--blue2)}.join-line{display:flex;gap:8px}.code-input{text-transform:uppercase;letter-spacing:4px;font-weight:900;text-align:center;min-width:0}.section-label{font-size:11px;color:#7f94a9;font-weight:800;letter-spacing:1px;margin:20px 0 9px}.room-list,.friend-list,.request-list{display:grid;gap:9px}.empty-state{padding:22px 12px;text-align:center;border:1px dashed #30445a;border-radius:13px;color:#8297ac;font-size:12px}.empty-icon{font-size:24px;margin-bottom:3px}.room-item,.friend-item,.request-item{display:flex;align-items:center;gap:11px;padding:12px;border:1px solid #293e52;background:#101b28;border-radius:14px;min-width:0}.room-code-icon{width:39px;height:39px;border-radius:12px;background:#1b3348;border:1px solid #2e516b;display:grid;place-items:center;color:var(--blue2);font-weight:900;font-size:13px;flex-shrink:0}.room-info,.friend-info{flex:1;min-width:0}.room-info strong,.friend-info strong{font-size:13px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.room-info span,.friend-info span{font-size:11px;color:var(--muted)}.mini-online{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;margin-left:5px}.tabs{display:flex;gap:6px;padding:5px;background:#0b1622;border:1px solid #25384c;border-radius:13px;margin-bottom:20px;width:max-content;max-width:100%}.navtab{border:0;background:transparent;color:#8ea4b9;padding:9px 16px;border-radius:9px;font-size:13px;font-weight:800}.navtab.active{background:#1a527e;color:#fff;box-shadow:0 5px 15px #0d6eb51a}.friends-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.add-friend-form{display:flex;gap:8px}.add-friend-form input{min-width:0;flex:1;padding:10px 12px;background:#0b1724;border:1px solid #2a3d52;border-radius:11px;color:white}.request-item{align-items:flex-start}.request-avatar,.friend-avatar{width:39px;height:39px;background:linear-gradient(145deg,#2b8bdd,#263b51);border-radius:13px;display:grid;place-items:center;font-weight:900;flex-shrink:0}.request-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.room-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}.backline{display:flex;align-items:center;gap:12px}.room-top h1{font-size:23px;margin:0}.room-top p{font-size:12px;color:var(--muted);margin:3px 0 0}.room-code{font-family:ui-monospace,monospace;letter-spacing:3px;font-size:18px;font-weight:900;color:var(--blue2);background:#0b1724;border:1px dashed #315775;border-radius:12px;padding:7px 12px;direction:ltr}.room-columns{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:start}.seat-list{display:grid;gap:9px}.seat{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #2b4054;background:#101b28;border-radius:14px}.seat-num{width:33px;height:33px;border-radius:10px;background:#1b3044;color:#7ca4c6;font-size:12px;font-weight:900;display:grid;place-items:center}.seat.filled .seat-num{background:#185282;color:#d5edff}.seat-label{flex:1;min-width:0}.seat-label strong{display:block;font-size:13px}.seat-label span{font-size:11px;color:var(--muted)}.host-tag{font-size:10px;color:var(--gold);border:1px solid #6e552f;background:#33291b;padding:2px 6px;border-radius:7px}.state-banner{display:flex;gap:11px;align-items:center;padding:13px;border-radius:14px;border:1px solid #2b4d69;background:#122b41;margin-bottom:15px}.state-banner .state-icon{font-size:22px}.state-banner strong{display:block;font-size:13px}.state-banner span{display:block;font-size:11px;color:#a3b9ce}.role-card{border-radius:19px;padding:22px;margin-bottom:16px;border:1px solid #2b6ca0;background:radial-gradient(ellipse at 50% 0%,#1e61913d,transparent 60%),linear-gradient(145deg,#142b40,#101b29);text-align:center;position:relative;overflow:hidden}.role-card.spy{border-color:#775832;background:radial-gradient(ellipse at 50% 0%,#a16e252c,transparent 60%),linear-gradient(145deg,#302719,#171d25)}.role-symbol{font-size:36px;margin:3px 0 8px;filter:drop-shadow(0 0 18px #38a6ff50);animation:float 3s ease-in-out infinite}.role-card.spy .role-symbol{filter:drop-shadow(0 0 15px #e5a04a55)}.role-card h2{font-size:25px;margin:0 0 5px}.role-card p{font-size:12px;color:#adc2d5;margin-bottom:13px}.secret-word{display:inline-block;padding:8px 18px;border-radius:11px;background:#174d78;border:1px solid #3e99da;color:#eff9ff;font-size:22px;font-weight:900;letter-spacing:1px}.role-card.spy .secret-word{background:#51381e;border-color:#a67a3c;color:#ffe0a7}.turn-pill{display:inline-flex;align-items:center;gap:7px;border:1px solid #345570;border-radius:999px;padding:6px 10px;color:#b5d8f2;font-size:11px;margin-bottom:12px}.clue-form{display:flex;gap:8px;margin:12px 0}.clue-form input{flex:1;min-width:0;background:#0b1724;border:1px solid #2c4157;border-radius:12px;padding:11px 13px;color:#fff}.quick-words{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.quick-word{border:1px solid #2b4359;background:#14283a;color:#a9c4da;border-radius:999px;padding:6px 10px;font-size:11px}.clue-item{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid #253748}.clue-item:last-child{border-bottom:0}.clue-avatar{width:32px;height:32px;border-radius:10px;background:#1d3549;display:grid;place-items:center;color:var(--blue2);font-size:12px;font-weight:900;flex-shrink:0}.clue-content{min-width:0;flex:1}.clue-content strong{font-size:12px;display:block}.clue-content p{font-size:13px;color:#d4e2ee;margin:2px 0 0;word-break:break-word}.vote-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:9px;margin-top:14px}.vote-option{border:1px solid #2c4258;background:#101e2c;border-radius:13px;padding:13px 8px;color:#e8f4ff;display:grid;justify-items:center;gap:5px}.vote-option:hover{border-color:#348fd8;background:#15344f}.vote-option .vote-face{font-size:24px}.vote-option small{color:var(--muted);font-size:10px}.result-card{text-align:center;padding:24px;border:1px solid #345c79;background:radial-gradient(ellipse at 50% 0%,#247ab12b,transparent 60%),#111e2b;border-radius:19px;margin-bottom:16px}.result-card.citizens-win{border-color:#26745b}.result-card.spy-win{border-color:#815e36}.result-symbol{font-size:45px;margin-bottom:7px;animation:pop .5s ease both}.result-card h2{font-size:25px;margin:0 0 6px}.result-card p{color:#b0c2d3;font-size:13px;margin:0}.result-word{margin-top:14px;display:inline-block;padding:7px 16px;border-radius:10px;background:#1b3449;color:#cfeaff;font-weight:900}.role-reveals{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:14px 0}.role-reveal{background:#101b28;border:1px solid #293e52;border-radius:12px;padding:10px;text-align:center}.role-reveal strong{display:block;font-size:12px}.role-reveal span{font-size:11px;color:var(--muted)}.role-reveal.spy{border-color:#8a673c;background:#2c241a}.role-reveal.spy span{color:#ffd38d}.invite-banner{border:1px solid #3677a7;background:#12304a;border-radius:14px;padding:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.invite-banner strong{font-size:12px;display:block}.invite-banner span{font-size:11px;color:#abc8df}.toast-wrap{position:fixed;left:16px;bottom:18px;z-index:50;display:grid;gap:8px;width:min(370px,calc(100% - 32px));pointer-events:none}.toast{background:#172737;border:1px solid #36516a;border-radius:13px;padding:12px 14px;box-shadow:var(--shadow);font-size:12px;animation:toastIn .25s ease both;pointer-events:auto}.toast.error{border-color:#7c3b48;color:#ffc1c6}.toast.success{border-color:#2c725c;color:#a4f4d2}.toast.info{border-color:#37668a;color:#c7e6ff}.muted{color:var(--muted)}.small{font-size:11px}.divider{height:1px;background:#29394a;margin:18px 0}.footnote{font-size:11px;color:#71869b;text-align:center;margin-top:22px}.spinner{width:14px;height:14px;border-radius:50%;border:2px solid #ffffff45;border-top-color:#fff;display:inline-block;animation:spin .7s linear infinite}.copyright{font-size:10px;color:#64788c;direction:ltr;letter-spacing:1px}.settings-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.settings-row input{flex:1;min-width:150px;background:#0b1724;border:1px solid #2a3d52;border-radius:10px;padding:9px 12px;color:#fff}
+    @keyframes sweep{0%,70%{transform:translateX(-100%)}100%{transform:translateX(100%)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes pop{from{opacity:0;transform:scale(.7) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes toastIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}@keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:850px){.dash-grid,.friends-layout,.room-columns{grid-template-columns:1fr}.view{padding-top:20px}.panel{padding:18px}.hero{border-radius:21px}.room-columns{gap:14px}}
+    @media(max-width:520px){.shell{width:min(100% - 22px,1120px)}.topbar{height:70px}.brand-mark{width:39px;height:39px;border-radius:13px}.brand-title{font-size:13px}.brand-sub{font-size:9px;letter-spacing:1.2px}.status{padding:6px 8px;font-size:10px}.user-chip{display:none!important}.hero h1{font-size:30px}.hero p{font-size:13px}.panel{padding:15px;border-radius:17px}.player-option{padding:11px 6px}.join-line{flex-direction:column}.join-line .btn{width:100%}.room-top h1{font-size:20px}.room-code{font-size:15px}.room-top{align-items:flex-start}.role-card{padding:18px 12px}.clue-form{flex-direction:column}.clue-form .btn{width:100%}.invite-banner{align-items:flex-start;flex-direction:column}.invite-banner .btn{width:100%}.tabs{width:100%}.navtab{flex:1;padding:9px 8px}.auth-heading h1{font-size:24px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar shell">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="3.2"/><path d="M12 2v2M12 20v2"/></svg></div>
+      <div><div class="brand-title">SPY NETWORK</div><div class="brand-sub">TRUST NO ONE</div></div>
+    </div>
+    <div class="top-actions">
+      <div id="connectionStatus" class="status"><span class="status-dot"></span><span id="connectionText">جارٍ الاتصال</span></div>
+      <div id="userChip" class="user-chip"><div class="avatar" id="topAvatar">A</div><span id="topUsername" class="user-short"></span></div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="authView" class="auth-wrap view">
+      <div class="auth-card">
+        <div class="auth-heading">
+          <div class="auth-emblem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="3.2"/><path d="M4 4l2 2M20 4l-2 2"/></svg></div>
+          <h1>مهمتك تبدأ الآن</h1><p>كوّن فريقك، اخفِ هويتك، واكتشف الجاسوس.</p>
+        </div>
+        <div class="auth-tabs"><button class="auth-tab active" id="loginTab" type="button">تسجيل الدخول</button><button class="auth-tab" id="registerTab" type="button">إنشاء حساب</button></div>
+        <form id="authForm">
+          <div class="field"><label for="usernameInput">اسم المستخدم</label><input id="usernameInput" name="username" autocomplete="username" placeholder="مثال: agent_007" maxlength="20" required></div>
+          <div id="displayNameField" class="field hidden"><label for="displayNameInput">الاسم الظاهر داخل اللعبة</label><input id="displayNameInput" name="displayName" autocomplete="nickname" placeholder="الاسم الذي يراه أصدقاؤك" maxlength="24"></div>
+          <div class="field"><label for="passwordInput">كلمة المرور</label><input id="passwordInput" name="password" type="password" autocomplete="current-password" placeholder="8 أحرف على الأقل عند التسجيل" minlength="8" maxlength="128" required></div>
+          <div id="authHint" class="hint hidden">اسم المستخدم من 3 إلى 20 حرفًا أو رقمًا، وكلمة المرور 8 أحرف على الأقل.</div>
+          <div id="authError" class="auth-error hidden" role="alert"></div>
+          <button id="authSubmit" class="btn btn-primary btn-block" type="submit">دخول إلى الشبكة <span>←</span></button>
+        </form>
+        <p class="auth-foot">حسابك يُستخدم لحفظ اسمك وقائمة أصدقائك على هذا السيرفر.</p>
+      </div>
+    </section>
+
+    <section id="appView" class="view hidden">
+      <div class="tabs" id="mainTabs"><button class="navtab active" data-page="play">🎮 اللعب</button><button class="navtab" data-page="friends">👥 الأصدقاء</button><button class="navtab" data-page="profile">⚙️ حسابي</button></div>
+      <div id="appContent"></div>
+      <div class="footnote">SPY NETWORK <span class="copyright">· PRIVATE ROOMS · HIDDEN ROLES</span></div>
+    </section>
+  </main>
+
+  <div id="toastWrap" class="toast-wrap" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    'use strict';
+    const $ = selector => document.querySelector(selector);
+    const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    let ws = null, token = localStorage.getItem('spy_token') || '', currentUser = null;
+    let isRegister = false, page = 'play', selectedPlayers = 4, currentRoom = null, myRole = null;
+    let roomsList = [], friendsData = {friends:[],incoming:[],outgoing:[]}, incomingInvite = null;
+    let nextRequestId = 1, pendingRequests = new Map(), reconnectTimer = null, toastNumber = 0;
+
+    function setConnection(state, text) {
+      const element = $('#connectionStatus'); element.classList.remove('online','offline');
+      if (state) element.classList.add(state);
+      $('#connectionText').textContent = text;
+    }
+    function toast(message, type='info') {
+      const item = document.createElement('div'); item.className = 'toast ' + type; item.textContent = message;
+      item.dataset.toast = String(++toastNumber); $('#toastWrap').appendChild(item);
+      setTimeout(() => item.remove(), 4200);
+    }
+    function hideAuthError() { $('#authError').classList.add('hidden'); $('#authError').textContent = ''; }
+    function showAuthError(message) { $('#authError').textContent = message; $('#authError').classList.remove('hidden'); }
+    function setAuthMode(register) {
+      isRegister = register; hideAuthError();
+      $('#loginTab').classList.toggle('active', !register); $('#registerTab').classList.toggle('active', register);
+      $('#displayNameField').classList.toggle('hidden', !register); $('#authHint').classList.toggle('hidden', !register);
+      $('#passwordInput').autocomplete = register ? 'new-password' : 'current-password';
+      $('#authSubmit').innerHTML = register ? 'إنشاء حساب جديد <span>←</span>' : 'دخول إلى الشبكة <span>←</span>';
+    }
+    function showApp() {
+      $('#authView').classList.add('hidden'); $('#appView').classList.remove('hidden'); $('#userChip').style.display = 'flex';
+      $('#topUsername').textContent = currentUser?.displayName || currentUser?.username || '';
+      $('#topAvatar').textContent = (currentUser?.displayName || currentUser?.username || 'A').slice(0,1).toUpperCase();
+      renderApp();
+    }
+    function showAuth() {
+      $('#authView').classList.remove('hidden'); $('#appView').classList.add('hidden'); $('#userChip').style.display = 'none';
+      currentUser = null; currentRoom = null; myRole = null;
+    }
+    function request(action, payload={}) {
+      return new Promise((resolve, reject) => {
+        if (!ws || ws.readyState !== WebSocket.OPEN) { reject(new Error('لا يوجد اتصال بالسيرفر. انتظر حتى يعود الاتصال.')); return; }
+        const id = nextRequestId++;
+        const timeout = setTimeout(() => { pendingRequests.delete(id); reject(new Error('انتهت مهلة الطلب. حاول مرة أخرى.')); }, 12000);
+        pendingRequests.set(id, {resolve, reject, timeout});
+        ws.send(JSON.stringify({id, action, payload}));
+      });
+    }
+    function settleResponse(packet) {
+      const pending = pendingRequests.get(packet.id); if (!pending) return;
+      clearTimeout(pending.timeout); pendingRequests.delete(packet.id);
+      if (packet.ok) pending.resolve(packet.data || {}); else pending.reject(new Error(packet.error || 'حدث خطأ.'));
+    }
+    function handleEvent(packet) {
+      switch (packet.event) {
+        case 'rooms:update': roomsList = Array.isArray(packet.data) ? packet.data : []; if (currentUser && page==='play' && !currentRoom) renderApp(); break;
+        case 'friends:update': friendsData = packet.data || friendsData; if (currentUser && page==='friends') renderApp(); break;
+        case 'room:state': currentRoom = packet.data; if (currentUser) renderApp(); break;
+        case 'room:left': currentRoom = null; myRole = null; if (currentUser) renderApp(); break;
+        case 'game:role': myRole = packet.data || null; if (currentUser) renderApp(); break;
+        case 'room:invite': incomingInvite = packet.data; toast(`دعوة للغرفة ${packet.data.code} من ${packet.data.from}`, 'info'); if (currentUser) renderApp(); break;
+        case 'notice': toast(packet.data?.text || 'لديك إشعار جديد.', 'info'); break;
+      }
+    }
+    function connectSocket() {
+      clearTimeout(reconnectTimer);
+      let socketUrl;
+      if (location.protocol === 'file:') socketUrl = 'ws://localhost:3000';
+      else socketUrl = (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host;
+      try { ws = new WebSocket(socketUrl); } catch (error) { setConnection('offline','غير متصل'); reconnectTimer = setTimeout(connectSocket, 2500); return; }
+      setConnection('', 'جارٍ الاتصال');
+      ws.addEventListener('open', async () => {
+        setConnection('online','متصل بالسيرفر');
+        if (token) {
+          try {
+            const data = await request('auth:restore', {token});
+            currentUser = data.user; currentRoom = data.room || null; myRole = data.role || null;
+            showApp(); await refreshLists();
+          } catch (error) {
+            token = ''; localStorage.removeItem('spy_token'); showAuth();
+          }
+        }
+      });
+      ws.addEventListener('message', event => {
+        let packet; try { packet = JSON.parse(event.data); } catch { return; }
+        if (Object.prototype.hasOwnProperty.call(packet, 'id')) settleResponse(packet);
+        else if (packet.event) handleEvent(packet);
+      });
+      ws.addEventListener('close', () => {
+        setConnection('offline','انقطع الاتصال');
+        for (const [id, pending] of pendingRequests) { clearTimeout(pending.timeout); pending.reject(new Error('انقطع الاتصال بالسيرفر.')); pendingRequests.delete(id); }
+        reconnectTimer = setTimeout(connectSocket, 2500);
+      });
+      ws.addEventListener('error', () => setConnection('offline','مشكلة اتصال'));
+    }
+    async function refreshLists() {
+      try { friendsData = await request('friends:list'); } catch {}
+      try { roomsList = await request('rooms:list'); } catch {}
+      if (currentUser) renderApp();
+    }
+    function renderApp() {
+      if (!currentUser) return;
+      showTopUser();
+      if (currentRoom) {
+        $('#mainTabs').classList.add('hidden'); $('#appContent').innerHTML = renderRoom();
+      } else {
+        $('#mainTabs').classList.remove('hidden');
+        $('#mainTabs').querySelectorAll('[data-page]').forEach(button => button.classList.toggle('active', button.dataset.page === page));
+        $('#appContent').innerHTML = page === 'friends' ? renderFriends() : page === 'profile' ? renderProfile() : renderPlay();
+      }
+    }
+    function showTopUser() {
+      $('#topUsername').textContent = currentUser?.displayName || currentUser?.username || '';
+      $('#topAvatar').textContent = (currentUser?.displayName || currentUser?.username || 'A').slice(0,1).toUpperCase();
+    }
+    function renderPlay() {
+      const openRooms = roomsList.filter(room => room.playerCount < room.maxPlayers);
+      return `
+        ${incomingInvite ? `<div class="invite-banner"><div><strong>🎟️ دعوة للعب مع ${escapeHtml(incomingInvite.from)}</strong><span>الغرفة ${escapeHtml(incomingInvite.code)} · ${incomingInvite.maxPlayers} لاعبين</span></div><div style="display:flex;gap:7px;width:100%;max-width:260px"><button class="btn btn-primary btn-small" data-act="accept-invite">قبول الدعوة</button><button class="btn btn-ghost btn-small" data-act="dismiss-invite">رفض</button></div></div>`:''}
+        <section class="hero"><div class="eyebrow">OPERATION: UNKNOWN</div><h1>هل ستكتشف الجاسوس<br><span>قبل فوات الأوان؟</span></h1><p>الجميع يعرف الكلمة السرية… ما عدا شخصًا واحدًا. أعطِ تلميحك، راقب الآخرين، ولا تثق بأحد بسهولة.</p><div class="hero-pills"><span class="pill">🕵️ جاسوس واحد</span><span class="pill">👥 3–5 لاعبين</span><span class="pill">🌐 لعب أونلاين</span><span class="pill">⚡ جولات سريعة</span></div></section>
+        <div class="dash-grid">
+          <section class="panel"><div class="panel-heading"><div><h2>إنشاء غرفة</h2><p>اختر عدد اللاعبين وادعُ أصدقاءك.</p></div><div class="icon-badge">＋</div></div>
+            <div class="section-label" style="margin-top:0">عدد اللاعبين</div><div class="player-options">
+              ${[3,4,5].map(number => `<button type="button" class="player-option ${selectedPlayers===number?'selected':''}" data-act="select-count" data-count="${number}"><strong>${number}</strong><span>لاعبين</span></button>`).join('')}
+            </div><button class="btn btn-primary btn-block" data-act="create-room">إنشاء غرفة جديدة <span>↗</span></button>
+            <div class="divider"></div><div class="panel-heading" style="margin-bottom:10px"><div><h2 style="font-size:14px">الانضمام برمز</h2><p>أدخل الرمز الذي أرسله لك صديقك.</p></div></div>
+            <form class="join-line" id="joinForm"><input class="code-input" id="joinCode" placeholder="ABCDE" minlength="5" maxlength="5" aria-label="رمز الغرفة" required><button class="btn btn-secondary" type="submit">انضمام ←</button></form>
+          </section>
+          <section class="panel"><div class="panel-heading"><div><h2>الغرف المتاحة</h2><p>انضم إلى غرفة تنتظر اللاعبين.</p></div><button class="btn btn-ghost btn-small" data-act="refresh-rooms">⟳ تحديث</button></div>
+            <div class="room-list">${openRooms.length ? openRooms.map(room => `<div class="room-item"><div class="room-code-icon">${escapeHtml(room.code.slice(0,2))}</div><div class="room-info"><strong>غرفة ${escapeHtml(room.hostName)}</strong><span>الرمز ${escapeHtml(room.code)} · ${room.playerCount}/${room.maxPlayers} لاعبين</span></div><button class="btn btn-secondary btn-small" data-act="join-room" data-code="${escapeHtml(room.code)}">دخول</button></div>`).join('') : `<div class="empty-state"><div class="empty-icon">📡</div>لا توجد غرف مفتوحة الآن.<br>أنشئ غرفة وادعُ أصدقاءك!</div>`}</div>
+          </section>
+        </div>`;
+    }
+    function renderFriends() {
+      const friends = friendsData.friends || [], incoming = friendsData.incoming || [], outgoing = friendsData.outgoing || [];
+      return `<div class="room-top"><div><h1>قائمة الأصدقاء</h1><p>أضف أصدقاءك وادعهم إلى غرفك.</p></div><div class="pill">${friends.length} أصدقاء</div></div>
+        <section class="panel" style="margin-bottom:18px"><div class="panel-heading"><div><h2>إضافة صديق</h2><p>اكتب اسم المستخدم كما سجّل به في اللعبة.</p></div><div class="icon-badge">＋</div></div><form id="addFriendForm" class="add-friend-form"><input name="friendUsername" placeholder="اسم المستخدم" maxlength="20" required><button type="submit" class="btn btn-primary">إرسال الطلب</button></form></section>
+        <div class="friends-layout"><section class="panel"><div class="panel-heading"><div><h2>أصدقائي</h2><p>حالة الاتصال الحالية.</p></div><div class="icon-badge">👥</div></div><div class="friend-list">${friends.length ? friends.map(friend => `<div class="friend-item"><div class="friend-avatar">${escapeHtml(friend.displayName.slice(0,1).toUpperCase())}</div><div class="friend-info"><strong>${escapeHtml(friend.displayName)}</strong><span><i class="mini-online" style="background:${friend.online?'var(--green)':'#5e7184'}"></i>${friend.online?'متصل الآن':'غير متصل'} · @${escapeHtml(friend.username)}</span></div>${currentRoom && currentRoom.phase==='lobby' && friend.online ? `<button class="btn btn-secondary btn-small" data-act="invite-friend" data-username="${escapeHtml(friend.username)}">دعوة</button>`:''}</div>`).join('') : `<div class="empty-state"><div class="empty-icon">🛰️</div>لم تضف أي صديق بعد.</div>`}</div></section>
+        <section class="panel"><div class="panel-heading"><div><h2>طلبات الصداقة</h2><p>الواردة والصادرة.</p></div><div class="icon-badge">✉</div></div><div class="section-label" style="margin-top:0">الطلبات الواردة (${incoming.length})</div><div class="request-list">${incoming.length ? incoming.map(person => `<div class="request-item"><div class="request-avatar">${escapeHtml(person.displayName.slice(0,1).toUpperCase())}</div><div class="friend-info"><strong>${escapeHtml(person.displayName)}</strong><span>@${escapeHtml(person.username)}</span><div class="request-actions"><button class="btn btn-success btn-small" data-act="friend-respond" data-username="${escapeHtml(person.username)}" data-accept="true">قبول</button><button class="btn btn-ghost btn-small" data-act="friend-respond" data-username="${escapeHtml(person.username)}" data-accept="false">رفض</button></div></div></div>`).join('') : `<div class="empty-state">لا توجد طلبات واردة.</div>`}</div><div class="section-label">الطلبات الصادرة (${outgoing.length})</div><div class="request-list">${outgoing.length ? outgoing.map(person => `<div class="friend-item"><div class="friend-avatar">${escapeHtml(person.displayName.slice(0,1).toUpperCase())}</div><div class="friend-info"><strong>${escapeHtml(person.displayName)}</strong><span>بانتظار القبول · @${escapeHtml(person.username)}</span></div><span class="muted">◷</span></div>`).join('') : `<div class="empty-state">لا توجد طلبات صادرة.</div>`}</div></section></div>`;
+    }
+    function renderProfile() {
+      return `<div class="room-top"><div><h1>حسابي</h1><p>عدّل الاسم الظاهر داخل اللعبة.</p></div></div><section class="panel" style="max-width:650px"><div class="panel-heading"><div><h2>ملف العميل</h2><p>اسم المستخدم لا يتغير من هنا.</p></div><div class="icon-badge">⚙</div></div><form id="profileForm"><div class="field"><label>اسم المستخدم</label><input value="@${escapeHtml(currentUser.username)}" disabled></div><div class="field"><label for="profileDisplayName">الاسم الظاهر</label><input id="profileDisplayName" name="displayName" value="${escapeHtml(currentUser.displayName || currentUser.username)}" maxlength="24" required></div><button class="btn btn-primary" type="submit">حفظ التغييرات</button></form><div class="divider"></div><button class="btn btn-danger" data-act="logout">تسجيل الخروج</button><p class="small muted" style="margin:14px 0 0">إذا أعيد تشغيل السيرفر فقد تحتاج إلى تسجيل الدخول مجددًا، لكن الحسابات المحفوظة تبقى في ملف قاعدة البيانات على الاستضافة الدائمة.</p></section>`;
+    }
+    function renderRoom() {
+      const room = currentRoom;
+      if (!room) return '';
+      const players = room.players || [];
+      const stateLabels = {lobby:['⏳','بانتظار اللاعبين','شارك رمز الغرفة مع أصدقائك.'],clues:['💬','مرحلة التلميحات','أعطِ تلميحًا ذكيًا دون كشف الكلمة كاملة.'],voting:['🗳️','مرحلة التصويت','من تعتقد أنه الجاسوس؟'],spy_guess:['🎯','الفرصة الأخيرة للجاسوس','صوّتّم على مواطن؛ والآن على الجاسوس تخمين الكلمة.'],ended:['🏁','انتهت الجولة','كُشفت الأدوار والنتيجة.']};
+      const label = stateLabels[room.phase] || stateLabels.lobby;
+      let body = '';
+      if (room.phase === 'lobby') {
+        body = `<div class="state-banner"><div class="state-icon">${label[0]}</div><div><strong>${label[1]}</strong><span>${players.length===room.maxPlayers?'الغرفة مكتملة. المضيف يستطيع بدء الجولة.':`نحتاج ${room.maxPlayers-players.length} لاعب إضافي لبدء اللعبة.`}</span></div></div>
+          <div class="section-label" style="margin-top:0">اللاعبون (${players.length}/${room.maxPlayers})</div><div class="seat-list">${Array.from({length:room.maxPlayers},(_,i)=>{const p=players[i];return p?`<div class="seat filled"><div class="seat-num">${String(i+1).padStart(2,'0')}</div><div class="seat-label"><strong>${escapeHtml(p.displayName)} ${p.username===currentUser.username?'(أنت)':''}</strong><span>@${escapeHtml(p.username)}</span></div>${p.isHost?'<span class="host-tag">المضيف</span>':''}</div>`:`<div class="seat"><div class="seat-num">${String(i+1).padStart(2,'0')}</div><div class="seat-label"><strong>مكان شاغر</strong><span>شارك رمز الغرفة لدعوة لاعب</span></div><span class="muted">＋</span></div>`}).join('')}</div>
+          <div class="divider"></div><button class="btn btn-primary btn-block" data-act="start-game" ${room.youAreHost && players.length===room.maxPlayers?'':'disabled'}>${room.youAreHost?'🚀 بدء الجولة':'بانتظار المضيف لبدء الجولة'}</button>
+          <p class="small muted" style="text-align:center;margin:10px 0 0">الجاسوس والكلمة يتم اختيارهما سرًا بواسطة السيرفر.</p>`;
+      } else {
+        body = renderGameBody(room, label);
+      }
+      return `<div class="room-top"><div class="backline"><button class="btn btn-ghost btn-small" data-act="leave-room">← خروج</button><div><h1>غرفة العمليات</h1><p>${label[1]} · ${players.length} لاعبين</p></div></div><button class="room-code" data-act="copy-code" title="نسخ الرمز">${escapeHtml(room.code)} ⧉</button></div>
+        ${room.endMessage && room.phase==='lobby' ? `<div class="auth-error" style="margin-bottom:16px">${escapeHtml(room.endMessage)}</div>`:''}
+        <div class="room-columns"><section class="panel"><div class="panel-heading"><div><h2>فريق المهمة</h2><p>الأدوار مخفية عن الآخرين.</p></div><div class="icon-badge">🕵️</div></div><div class="seat-list">${players.map((player,index)=>`<div class="seat filled"><div class="seat-num">${String(index+1).padStart(2,'0')}</div><div class="seat-label"><strong>${escapeHtml(player.displayName)} ${player.username===currentUser.username?'(أنت)':''}</strong><span>${player.isHost?'مضيف الغرفة':'عميل ميداني'}</span></div>${player.isHost?'<span class="host-tag">HOST</span>':''}</div>`).join('')}</div>
+        ${room.phase==='lobby' ? `<div class="divider"></div><div class="panel-heading"><div><h2 style="font-size:14px">دعوة الأصدقاء</h2><p>الأصدقاء المتصلون فقط.</p></div></div>${(friendsData.friends||[]).filter(friend=>friend.online).length ? (friendsData.friends||[]).filter(friend=>friend.online).map(friend=>`<div class="friend-item" style="margin-bottom:8px"><div class="friend-avatar">${escapeHtml(friend.displayName.slice(0,1))}</div><div class="friend-info"><strong>${escapeHtml(friend.displayName)}</strong><span>متصل الآن</span></div><button class="btn btn-secondary btn-small" data-act="invite-friend" data-username="${escapeHtml(friend.username)}">دعوة</button></div>`).join('') : `<div class="empty-state">لا يوجد أصدقاء متصلون الآن.</div>`}`:''}
+        </section><section class="panel"><div class="panel-heading"><div><h2>${room.phase==='lobby'?'منطقة الانتظار':'ساحة الجولة'}</h2><p>${label[2]}</p></div><div class="icon-badge">${label[0]}</div></div>${body}</section></div>`;
+    }
+    function renderGameBody(room, label) {
+      let output = '';
+      if (room.phase !== 'ended') {
+        if (myRole) {
+          output += `<div class="role-card ${myRole.role==='spy'?'spy':''}"><div class="role-symbol">${myRole.role==='spy'?'🕶️':'🧑‍💼'}</div><h2>${myRole.role==='spy'?'أنت الجاسوس':'أنت مواطن'}</h2><p>${myRole.role==='spy'?'لا تعرف كلمة المواطنين. حاول اكتشافها دون أن ينكشف أمرك.':'تذكّر الكلمة السرية، وأعطِ تلميحات ذكية دون قولها مباشرة.'}</p>${myRole.role==='citizen'?`<div class="secret-word">${escapeHtml(myRole.word)}</div>`:`<div class="secret-word">الكلمة مجهولة</div>`}<p style="margin:12px 0 0;font-size:10px">هذه البطاقة خاصة بك — لا تعرضها للآخرين.</p></div>`;
+        } else {
+          output += `<div class="state-banner"><div class="state-icon">🔐</div><div><strong>جاري تجهيز الدور السري</strong><span>لا تغلق الصفحة حتى تظهر بطاقتك.</span></div></div>`;
+        }
+      }
+      if (room.phase === 'clues') {
+        const isMyTurn = room.currentTurn === currentUser.username;
+        const currentName = room.players.find(player=>player.username===room.currentTurn)?.displayName || room.currentTurn || '—';
+        output += `<div class="state-banner"><div class="state-icon">💬</div><div><strong>${isMyTurn?'دورك الآن!':`الدور على ${escapeHtml(currentName)}`}</strong><span>${isMyTurn?'اكتب تلميحًا مرتبطًا بالكلمة دون كشفها.':'انتظر حتى ينتهي اللاعب من التلميح.'}</span></div></div>`;
+        if (isMyTurn) output += `<form id="clueForm" class="clue-form"><input name="clue" maxlength="100" placeholder="اكتب تلميحك أو قل: أنا مواطن..." required><button class="btn btn-primary" type="submit">إرسال التلميح</button></form><div class="quick-words"><button class="quick-word" data-act="quick-clue" data-text="أنا مواطن">أنا مواطن</button><button class="quick-word" data-act="quick-clue" data-text="لديّ فكرة عن الكلمة">لديّ فكرة</button><button class="quick-word" data-act="quick-clue" data-text="أشك أن هناك جاسوسًا">أشك بوجود جاسوس</button></div>`;
+        output += `<div class="section-label">التلميحات (${room.clues.length}/${room.players.length})</div>${renderClues(room.clues)}`;
+      } else if (room.phase === 'voting') {
+        output += `<div class="state-banner"><div class="state-icon">🗳️</div><div><strong>${room.youVoted?'تم تسجيل تصويتك':'اختر من تشك أنه الجاسوس'}</strong><span>${room.youVoted?'ننتظر بقية اللاعبين.':'يمكنك اختيار لاعب واحد فقط، ولا يمكنك التصويت لنفسك.'}</span></div></div>`;
+        if (!room.youVoted) output += `<div class="vote-list">${room.players.filter(player=>player.username!==currentUser.username).map(player=>`<button class="vote-option" data-act="vote" data-username="${escapeHtml(player.username)}"><span class="vote-face">🧑‍💼</span><strong>${escapeHtml(player.displayName)}</strong><small>التصويت لهذا اللاعب</small></button>`).join('')}</div>`;
+        else output += `<div class="empty-state">✅ وصل تصويتك بأمان.</div>`;
+        output += `<div class="section-label">التلميحات السابقة</div>${renderClues(room.clues)}`;
+      } else if (room.phase === 'spy_guess') {
+        output += `<div class="state-banner"><div class="state-icon">🎯</div><div><strong>فرصة أخيرة للجاسوس</strong><span>${escapeHtml(room.endMessage||'خمن كلمة المواطنين.')}</span></div></div>`;
+        if (myRole?.role==='spy') output += `<form id="guessForm" class="clue-form"><input name="guess" maxlength="100" placeholder="ما الكلمة السرية؟" required><button class="btn btn-primary" type="submit">تأكيد التخمين</button></form><p class="small muted">إذا عرفت الكلمة، يفوز الجاسوس. إذا أخطأت، يفوز المواطنون.</p>`;
+        else output += `<div class="empty-state"><div class="empty-icon">⏳</div>الجاسوس يفكر الآن في الكلمة…</div>`;
+        output += `<div class="section-label">التلميحات السابقة</div>${renderClues(room.clues)}`;
+      } else if (room.phase === 'ended') {
+        const spyWon = room.winner === 'spy';
+        output = `<div class="result-card ${spyWon?'spy-win':'citizens-win'}"><div class="result-symbol">${spyWon?'🕶️':'🏆'}</div><h2>${spyWon?'فاز الجاسوس!':'فاز المواطنون!'}</h2><p>${escapeHtml(room.endMessage||'انتهت الجولة.')}</p><div class="result-word">الكلمة: ${escapeHtml(room.word||'—')}</div></div><div class="section-label">كشف الأدوار</div><div class="role-reveals">${(room.roles||[]).map(player=>`<div class="role-reveal ${player.role==='spy'?'spy':''}"><strong>${escapeHtml(player.displayName)}</strong><span>${player.role==='spy'?'🕶️ الجاسوس':'👤 مواطن'}</span></div>`).join('')}</div>${room.spyGuess?`<p class="small muted">تخمين الجاسوس: ${escapeHtml(room.spyGuess)}</p>`:''}<div class="divider"></div>${room.youAreHost?`<button class="btn btn-primary btn-block" data-act="start-game">🔄 جولة جديدة بنفس اللاعبين</button>`:`<div class="empty-state">انتظر المضيف ليبدأ جولة جديدة.</div>`}`;
+      }
+      if (room.phase !== 'ended') output += `<div class="section-label">حالة الجولة</div><div class="room-item"><div class="room-code-icon">${room.votesSubmitted||0}</div><div class="room-info"><strong>${room.phase==='clues'?'تلميحات مكتملة':room.phase==='voting'?'أصوات مسجّلة':'الجولة جارية'}</strong><span>${room.phase==='clues'?`${room.clues.length} من ${room.players.length} تلميحات`:room.phase==='voting'?`${room.votesSubmitted} من ${room.votesTotal} أصوات`:'تابع التعليمات أعلاه'}</span></div></div>`;
+      return output;
+    }
+    function renderClues(clues) {
+      if (!clues?.length) return `<div class="empty-state">لم يقدم أحد تلميحًا بعد.</div>`;
+      return `<div>${clues.map((clue,index)=>`<div class="clue-item"><div class="clue-avatar">${index+1}</div><div class="clue-content"><strong>${escapeHtml(clue.displayName)}</strong><p>${escapeHtml(clue.text)}</p></div></div>`).join('')}</div>`;
+    }
+
+    $('#loginTab').addEventListener('click', () => setAuthMode(false));
+    $('#registerTab').addEventListener('click', () => setAuthMode(true));
+    $('#authForm').addEventListener('submit', async event => {
+      event.preventDefault(); hideAuthError();
+      if (!ws || ws.readyState !== WebSocket.OPEN) { showAuthError('السيرفر غير متصل بعد. شغّل السيرفر وانتظر الاتصال.'); return; }
+      const username = $('#usernameInput').value.trim(); const password = $('#passwordInput').value;
+      const displayName = $('#displayNameInput').value.trim();
+      const button = $('#authSubmit'); const original = button.innerHTML; button.disabled = true; button.innerHTML = '<span class="spinner"></span> جارٍ التحقق…';
+      try {
+        const result = await request(isRegister ? 'auth:register' : 'auth:login', {username,password,displayName});
+        token = result.token; localStorage.setItem('spy_token', token); currentUser = result.user; page='play';
+        await refreshLists(); showApp(); toast(isRegister?'تم إنشاء الحساب بنجاح. مرحبًا بك!':'مرحبًا بعودتك إلى الشبكة.', 'success');
+      } catch (error) { showAuthError(error.message); }
+      finally { button.disabled = false; button.innerHTML = original; }
+    });
+
+    document.addEventListener('click', async event => {
+      const tab = event.target.closest('[data-page]');
+      if (tab && currentUser) { page = tab.dataset.page; renderApp(); if (page==='friends') { try { friendsData = await request('friends:list'); renderApp(); } catch {} } return; }
+      const control = event.target.closest('[data-act]'); if (!control) return;
+      const action = control.dataset.act;
+      try {
+        if (action==='select-count') { selectedPlayers = Number(control.dataset.count); renderApp(); }
+        else if (action==='create-room') { const result=await request('room:create',{maxPlayers:selectedPlayers}); toast(`تم إنشاء الغرفة ${result.code}`,'success'); }
+        else if (action==='join-room') await request('room:join',{code:control.dataset.code});
+        else if (action==='refresh-rooms') { roomsList=await request('rooms:list'); renderApp(); toast('تم تحديث قائمة الغرف.','success'); }
+        else if (action==='leave-room') { await request('room:leave'); currentRoom=null; myRole=null; renderApp(); }
+        else if (action==='start-game') await request('room:start');
+        else if (action==='copy-code') { const code=currentRoom?.code; if (!code) return; try { await navigator.clipboard.writeText(code); } catch { const input=document.createElement('textarea'); input.value=code; document.body.appendChild(input); input.select(); document.execCommand('copy'); input.remove(); } toast('تم نسخ رمز الغرفة: '+code,'success'); }
+        else if (action==='vote') { await request('game:vote',{username:control.dataset.username}); toast('تم تسجيل تصويتك.','success'); }
+        else if (action==='quick-clue') { const input=$('#clueForm input[name="clue"]'); if (input) { input.value=control.dataset.text; input.focus(); } }
+        else if (action==='friend-respond') { await request('friends:respond',{username:control.dataset.username,accept:control.dataset.accept==='true'}); friendsData=await request('friends:list'); renderApp(); toast(control.dataset.accept==='true'?'تم قبول طلب الصداقة.':'تم رفض الطلب.','success'); }
+        else if (action==='invite-friend') { await request('friends:invite',{username:control.dataset.username}); toast('تم إرسال الدعوة إلى صديقك.','success'); }
+        else if (action==='accept-invite') { if (!incomingInvite) return; const invitation=incomingInvite; incomingInvite=null; await request('room:join',{code:invitation.code}); }
+        else if (action==='dismiss-invite') { incomingInvite=null; renderApp(); }
+        else if (action==='logout') { await request('auth:logout'); token='';localStorage.removeItem('spy_token');showAuth();toast('تم تسجيل الخروج.','info'); }
+      } catch (error) { toast(error.message || 'تعذر تنفيذ العملية.','error'); }
+    });
+    document.addEventListener('submit', async event => {
+      if (event.target.id==='joinForm') {
+        event.preventDefault(); const code=$('#joinCode').value.trim().toUpperCase(); if (code.length!==5) { toast('رمز الغرفة يتكون من 5 أحرف أو أرقام.','error'); return; }
+        try { await request('room:join',{code}); } catch(error) { toast(error.message,'error'); }
+      } else if (event.target.id==='addFriendForm') {
+        event.preventDefault(); const input=event.target.elements.friendUsername; const username=input.value.trim();
+        try { await request('friends:request',{username}); friendsData=await request('friends:list'); renderApp(); toast('تم إرسال طلب الصداقة.','success'); }
+        catch(error) { toast(error.message,'error'); }
+      } else if (event.target.id==='clueForm') {
+        event.preventDefault(); const input=event.target.elements.clue; const text=input.value.trim();
+        try { await request('game:clue',{text}); }
+        catch(error) { toast(error.message,'error'); }
+      } else if (event.target.id==='guessForm') {
+        event.preventDefault(); const word=event.target.elements.guess.value.trim();
+        try { await request('game:spy-guess',{word}); }
+        catch(error) { toast(error.message,'error'); }
+      } else if (event.target.id==='profileForm') {
+        event.preventDefault(); const displayName=event.target.elements.displayName.value.trim();
+        try { const result=await request('profile:update',{displayName}); currentUser=result.user; showTopUser(); renderApp(); toast('تم تحديث الملف الشخصي.','success'); }
+        catch(error) { toast(error.message,'error'); }
+      }
+    });
+
+    connectSocket();
+    setInterval(() => { if (currentUser && ws?.readyState===WebSocket.OPEN) { request('rooms:list').then(data=>{ roomsList=data; if(page==='play'&&!currentRoom)renderApp(); }).catch(()=>{}); if(page==='friends') request('friends:list').then(data=>{friendsData=data;renderApp();}).catch(()=>{}); } }, 15000);
+  })();
+  </script>
+</body>
+</html>
